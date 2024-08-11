@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
         routes: {
           Home_screen.routeName:(_)=>Home_screen(),
           Quran_detalls_screen.routeName:(_)=>Quran_detalls_screen(),
+          Hadeth_detalls_screen.routeName:(_)=>Hadeth_detalls_screen(),
 
         },
     );
