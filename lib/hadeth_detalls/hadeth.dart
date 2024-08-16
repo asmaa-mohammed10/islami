@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'hadeth_detalls_args.dart';
+import 'hadeth_detalls_screen.dart';
+
 class Hadeth extends StatelessWidget {
   List<String> hadethNames =["الحد يث الأول","الحد يث الثاني","الحد يث الثالث","الحد يث الرابع","الحد يث الخامس"
     ,"الحد يث السادس","الحد يث السابع","الحد يث الثامن","الحد يث التاسع","الحد يث العاشر","الحد يث الحادي عشر","الحد يث الثاني عشر"," الحد يث الثالث عشر","الحد يث الرابع عشر","الحد يث الخامس عشر"
@@ -23,7 +26,9 @@ class Hadeth extends StatelessWidget {
 
                   return InkWell(
                     onTap: (){
-                      Navigator.pushNamed(context, hadethNames[index]);
+                      Navigator.pushNamed(context,
+                          Hadeth_detalls_screen.routeName,
+                          arguments: HadethDetallsArgs(hadethNames[index],index));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -33,6 +38,7 @@ class Hadeth extends StatelessWidget {
                               fontSize: 24
                           ),
                         ),
+
 
                       ],
                     ),
@@ -45,6 +51,7 @@ class Hadeth extends StatelessWidget {
                     margin: EdgeInsets.all(7),
                     height: 2,
                     color: Theme.of(context).primaryColor,
+
                   );
                 },
                 itemCount: hadethNames.length

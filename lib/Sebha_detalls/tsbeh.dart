@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Tsbeh extends StatelessWidget {
-  String numberOfTsbeh;
-  Tsbeh(this.numberOfTsbeh){}
+  String ofTsbeh;
+
+  Tsbeh(this.ofTsbeh){}
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,9 @@ class Tsbeh extends StatelessWidget {
         color:Theme.of(context).colorScheme.secondary ,
       ),
       child:
-      Text(numberOfTsbeh.toString(),
+      Text(ofTsbeh,
         style: TextStyle(
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w500,
           fontSize: 35,
         ),
       ),

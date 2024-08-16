@@ -9,21 +9,45 @@ class Sebha extends StatefulWidget {
 }
 
 class _SebhaState extends State<Sebha> {
+  double angel=0;
   int numberOfTsbeh=0;
+  int numberOfTsbehList=0;
+  List<String> tsbeh=[
+    "سبحان الله",
+    "الحمدلله",
+    "لا اله الا الله",
+    "لاحول ولا قوة الا بالله ",
+    "الله اكبر"
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 110),
+      padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width*0.2),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SebhaBody(),
+              SebhaBody(angel,
+                    () {
+                  numberOfTsbeh++;
+                  angel+=3;
+                  if(numberOfTsbeh%33==0)
+                    numberOfTsbehList++;
+
+
+                  if(numberOfTsbehList==tsbeh.length)
+                    numberOfTsbehList=0;
+
+
+                  setState(() {
+                  });
+                },
+              ),
             ],
           ),
-          SizedBox(height: 30,),
+          SizedBox(height: MediaQuery.of(context).size.height*0.037,),
 
           Text("عدد التسبيحات ",
             style: TextStyle(
@@ -31,32 +55,10 @@ class _SebhaState extends State<Sebha> {
               fontWeight: FontWeight.bold
             ),
           ),
-          SizedBox(height: 30,),
+          SizedBox(height: MediaQuery.of(context).size.height*0.035,),
           Tsbeh(numberOfTsbeh.toString()),
-          SizedBox(height: 30,),
-
-          ElevatedButton(onPressed:() {
-            numberOfTsbeh+=1;
-            setState(() {
-            });
-          },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(34) ),
-                backgroundColor: Theme.of(context).colorScheme.primary,
-
-              ),
-
-              child:
-              Text("سبحان الله",
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                  fontSize: 35
-
-                ),
-              )
-          )
-
-
+          SizedBox(height: MediaQuery.of(context).size.height*0.035,),
+          Tsbeh(tsbeh[numberOfTsbehList]),
 
 
 

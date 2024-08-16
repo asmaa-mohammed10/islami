@@ -34,8 +34,9 @@ class Quran extends StatelessWidget {
             child: ListView.separated(
                 itemBuilder: (context,index){
                   return QranTitleWidget(
-                    suraNames[index],
-                    versesNumber[index].toString()
+                    title:  suraNames[index],
+                    versesNumber: versesNumber[index].toString(),
+                     index: index
                   );
                 },
                 separatorBuilder: (context,index){

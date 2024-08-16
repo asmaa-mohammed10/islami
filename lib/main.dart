@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:islamy_app/Quran_detalls/quran_detalls_screen.dart';
 import 'package:islamy_app/home/home_sscreen.dart';
 
+import 'hadeth_detalls/hadeth_detalls_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        hoverColor: Color(0xb8ffffff),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Color(0xffbd8d48),
           selectedItemColor: Colors.black,
@@ -43,7 +46,10 @@ class MyApp extends StatelessWidget {
           primary: Color(0xffbd8d48),
           secondary: Color(0xffbd8d48).withOpacity(0.57),
           onPrimary: Colors.white,
-          onSecondary: Colors.black
+          onSecondary: Colors.black,
+          onPrimaryContainer: Color(0xBBFAF7F7),
+
+
         ),
 
 
@@ -54,7 +60,7 @@ class MyApp extends StatelessWidget {
         routes: {
           Home_screen.routeName:(_)=>Home_screen(),
           Quran_detalls_screen.routeName:(_)=>Quran_detalls_screen(),
-          Hadeth_detalls_screen.routeName:(_)=>Hadeth_detalls_screen(),
+          Hadeth_detalls_screen.routeName:(_)=> Hadeth_detalls_screen(),
 
         },
     );

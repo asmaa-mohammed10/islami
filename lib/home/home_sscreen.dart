@@ -3,6 +3,7 @@ import 'package:islamy_app/Quran_detalls/quran.dart';
 import 'package:islamy_app/hadeth_detalls/hadeth.dart';
 import 'package:islamy_app/radio_detalls/radio.dart';
 import 'package:islamy_app/Sebha_detalls/sebha.dart';
+import 'package:islamy_app/setting_detalls/setting.dart';
 
 class Home_screen extends StatefulWidget {
   static const String routeName = "Home_screen";
@@ -56,6 +57,12 @@ class _Home_screenState extends State<Home_screen> {
                 icon:ImageIcon(AssetImage("assets/images/icon_quran.png")),
                 label: "قرآن"
             ),
+            BottomNavigationBarItem(
+                backgroundColor:Theme.of(context).colorScheme.primary,
+                icon:Icon(Icons.settings) ,
+                label: "اعدادات"
+            ),
+
 
           ],
         ),
@@ -64,7 +71,8 @@ class _Home_screenState extends State<Home_screen> {
               child:
               currentNavIndex == 0 ? Radioo() :
               currentNavIndex == 1 ? Sebha() :
-              currentNavIndex==2 ? Hadeth(): Quran()
+              currentNavIndex==2 ? Hadeth():
+              currentNavIndex==3 ?Quran():Setting()
               ,
             )
            ,
