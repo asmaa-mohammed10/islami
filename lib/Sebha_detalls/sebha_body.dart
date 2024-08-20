@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../setting_detalls/settingProvaider.dart';
+
 
 class SebhaBody extends StatelessWidget {
   double angle=0;
@@ -7,12 +11,17 @@ class SebhaBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingProvaider settingProvaider =Provider.of<SettingProvaider>(context);
+
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.bottomCenter,
       children: [
         Positioned(child:
-        Image.asset("assets/images/head_sebha_logo.png"),
+        Image.asset(settingProvaider.themeMode==ThemeMode.light
+            ?"assets/images/head_sebha_logo.png"
+            :"assets/images/head_sebha_dark.png"
+        ),
           right: MediaQuery.of(context).size.width *0.11,
           bottom: MediaQuery.of(context).size.height *0.23,
 
@@ -21,7 +30,10 @@ class SebhaBody extends StatelessWidget {
           onTap:onTap ,
           child: Transform.rotate(
               angle: angle,
-            child: Image.asset("assets/images/body_sebha_logo.png"),
+            child: Image.asset(settingProvaider.themeMode==ThemeMode.light
+                ?"assets/images/body_sebha_logo.png"
+                :"assets/images/body_sebha_dark.png"
+            ),
 
           ),
         )

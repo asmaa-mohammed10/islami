@@ -1,61 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islamy_app/Quran_detalls/quran_detalls_screen.dart';
+import 'package:islamy_app/add_theme.dart';
 import 'package:islamy_app/home/home_sscreen.dart';
-
+import 'package:islamy_app/setting_detalls/settingProvaider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'hadeth_detalls/hadeth_detalls_screen.dart';
-
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => SettingProvaider(),
+        child : Islamy()
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Islamy extends StatelessWidget {
+  late SettingProvaider settingProvaider;
+  Islamy({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    settingProvaider =Provider.of<SettingProvaider>(context);
+    initShardPref();
+
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        hoverColor: Color(0xb8ffffff),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: Color(0xffbd8d48),
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.white,
-          selectedIconTheme:IconThemeData(
-            size: 36
-          ),
-          unselectedIconTheme: IconThemeData(
-            size: 30
-          )
-        ),
-        scaffoldBackgroundColor:Colors.transparent,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          titleTextStyle: TextStyle(
-              fontSize: 24,
-              color: Colors.black,
-              fontWeight: FontWeight.bold
-          ),
-
-        ),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor:Color(0xffbd8d48),
-          primary: Color(0xffbd8d48),
-          secondary: Color(0xffbd8d48).withOpacity(0.57),
-          onPrimary: Colors.white,
-          onSecondary: Colors.black,
-          onPrimaryContainer: Color(0xBBFAF7F7),
+      theme: AddTheme.lightTheme,
+      darkTheme:AddTheme.darkTheme ,
+      themeMode: settingProvaider.themeMode,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale("en"), // English
+        Locale("ar"), // Spanish
+      ],
+        locale: Locale(settingProvaider.language),
 
 
-        ),
-
-
-
-        useMaterial3: true,
-      ),
         initialRoute: Home_screen.routeName,
         routes: {
           Home_screen.routeName:(_)=>Home_screen(),
@@ -64,5 +54,18 @@ class MyApp extends StatelessWidget {
 
         },
     );
+  }
+
+  Future<void> initShardPref() async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var language =prefs.getString("language");
+    if(language!=null)
+      settingProvaider.changrLanguge(language);
+    var mode =prefs.getString("mode");
+    settingProvaider.changrTheme(mode=="dark"?ThemeMode.dark:ThemeMode.light);
+
+
+
+
   }
 }

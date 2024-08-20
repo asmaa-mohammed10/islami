@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islamy_app/Sebha_detalls/sebha_body.dart';
 import 'package:islamy_app/Sebha_detalls/tsbeh.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Sebha extends StatefulWidget {
   @override
@@ -49,10 +51,11 @@ class _SebhaState extends State<Sebha> {
           ),
           SizedBox(height: MediaQuery.of(context).size.height*0.037,),
 
-          Text("عدد التسبيحات ",
+          Text(AppLocalizations.of(context)!.number_of_tsbeh,
             style: TextStyle(
               fontSize: 35,
-              fontWeight: FontWeight.bold
+              fontWeight: FontWeight.bold,
+              color:Theme.of(context).colorScheme.onSecondary,
             ),
           ),
           SizedBox(height: MediaQuery.of(context).size.height*0.035,),

@@ -12,7 +12,7 @@ class RadioBotten extends StatelessWidget {
             icon: Icon(
               Icons.skip_previous_rounded,
               size: 50,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.onSecondary,
 
 
 
@@ -22,7 +22,7 @@ class RadioBotten extends StatelessWidget {
             icon: Icon(
               Icons.play_arrow_rounded,
               size: 60,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.onSecondary,
 
 
 
@@ -32,7 +32,7 @@ class RadioBotten extends StatelessWidget {
             icon: Icon(
               Icons.skip_next,
               size: 50,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.onSecondary,
 
 
 

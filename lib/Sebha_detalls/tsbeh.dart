@@ -19,6 +19,7 @@ class Tsbeh extends StatelessWidget {
         style: TextStyle(
           fontWeight: FontWeight.w500,
           fontSize: 35,
+          color:Theme.of(context).colorScheme.onPrimary,
         ),
       ),
     );

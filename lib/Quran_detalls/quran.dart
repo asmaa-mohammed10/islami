@@ -44,7 +44,7 @@ class Quran extends StatelessWidget {
                     width: double.infinity,
                     margin: EdgeInsets.all(7),
                     height: 2,
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).colorScheme.onSecondary,
                   );
                 },
                 itemCount: suraNames.length

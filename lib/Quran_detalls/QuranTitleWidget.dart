@@ -20,13 +20,18 @@ class QranTitleWidget extends StatelessWidget {
         children: [
           Text(versesNumber,
             style: TextStyle(
-                fontSize: 24
+                fontSize: 24,
+              color: Theme.of(context).colorScheme.onPrimary,
+
+
             ),
           ),
           Text(title,
             style: TextStyle(
-                fontSize: 24
-            ),
+                fontSize: 24,
+                color: Theme.of(context).colorScheme.onPrimary,
+
+          ),
           ),
 
         ],

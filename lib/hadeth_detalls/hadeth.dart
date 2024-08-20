@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'hadeth_detalls_args.dart';
 import 'hadeth_detalls_screen.dart';
 
@@ -15,6 +14,7 @@ class Hadeth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
 
       child: Column(
@@ -35,7 +35,9 @@ class Hadeth extends StatelessWidget {
                       children: [
                         Text(hadethNames[index],
                           style: TextStyle(
-                              fontSize: 24
+                              fontSize: 24,
+                            color: Theme.of(context).colorScheme.onPrimary,
+
                           ),
                         ),
 
@@ -50,7 +52,7 @@ class Hadeth extends StatelessWidget {
                     width: double.infinity,
                     margin: EdgeInsets.all(7),
                     height: 2,
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).colorScheme.onSecondary,
 
                   );
                 },

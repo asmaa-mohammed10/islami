@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import '../setting_detalls/settingProvaider.dart';
 import 'hadeth_detalls_args.dart';
+import 'package:provider/provider.dart';
+
 
 class Hadeth_detalls_screen extends StatefulWidget {
   static const String routeName="Hadeth_detalls_screen";
@@ -15,13 +17,16 @@ class _Hadeth_detalls_screenState extends State<Hadeth_detalls_screen> {
   List<String> lines=[];
 @override
   Widget build(BuildContext context) {
-    HadethDetallsArgs args =ModalRoute.of(context)?.settings.arguments as HadethDetallsArgs;
+  SettingProvaider settingProvaider =Provider.of<SettingProvaider>(context);
+  HadethDetallsArgs args =ModalRoute.of(context)?.settings.arguments as HadethDetallsArgs;
 
     readHadeth(args.index);
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/default_bg.png")
+            image:  AssetImage(settingProvaider.themeMode==ThemeMode.light
+                ?"assets/images/default_bg.png":
+            "assets/images/dark_bg.png"),
           )
       ),
       child: Scaffold(
@@ -36,7 +41,12 @@ class _Hadeth_detalls_screenState extends State<Hadeth_detalls_screen> {
             color:Theme.of(context).hoverColor,
           ),
           child: lines.isNotEmpty ?Text(lines[args.index],
-              textAlign: TextAlign.center,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onPrimary,
+
+            ),
+
           )
               :Center(child: CircularProgressIndicator(),),
 

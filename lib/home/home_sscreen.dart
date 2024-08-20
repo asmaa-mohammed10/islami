@@ -4,6 +4,10 @@ import 'package:islamy_app/hadeth_detalls/hadeth.dart';
 import 'package:islamy_app/radio_detalls/radio.dart';
 import 'package:islamy_app/Sebha_detalls/sebha.dart';
 import 'package:islamy_app/setting_detalls/setting.dart';
+import 'package:islamy_app/setting_detalls/settingProvaider.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Home_screen extends StatefulWidget {
   static const String routeName = "Home_screen";
@@ -17,15 +21,20 @@ class _Home_screenState extends State<Home_screen> {
 
   @override
   Widget build(BuildContext context) {
+    SettingProvaider settingProvaider =Provider.of<SettingProvaider>(context);
+
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/default_bg.png")
+          image: AssetImage(settingProvaider.themeMode==ThemeMode.light
+              ?"assets/images/default_bg.png":
+              "assets/images/dark_bg.png"),
+          fit: BoxFit.cover
         )
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("اسلامي"),
+          title: Text(AppLocalizations.of(context)!.islamy),
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentNavIndex,
@@ -40,27 +49,27 @@ class _Home_screenState extends State<Home_screen> {
             BottomNavigationBarItem(
                 backgroundColor:Theme.of(context).colorScheme.primary,
                 icon:ImageIcon(AssetImage("assets/images/icon_radio.png")),
-              label: "راديو"
+              label: AppLocalizations.of(context)!.radio
             ),
             BottomNavigationBarItem(
                 backgroundColor:Theme.of(context).colorScheme.primary,
                 icon:ImageIcon(AssetImage("assets/images/icon_sebha.png")),
-                label: "سبحة"
+                label: AppLocalizations.of(context)!.sebha
             ),
             BottomNavigationBarItem(
                 backgroundColor:Theme.of(context).colorScheme.primary,
                 icon:ImageIcon(AssetImage("assets/images/icon_hadeth.png")),
-                label: "حديث"
+                label: AppLocalizations.of(context)!.hadeth
             ),
             BottomNavigationBarItem(
                 backgroundColor:Theme.of(context).colorScheme.primary,
                 icon:ImageIcon(AssetImage("assets/images/icon_quran.png")),
-                label: "قرآن"
+                label: AppLocalizations.of(context)!.quran
             ),
             BottomNavigationBarItem(
                 backgroundColor:Theme.of(context).colorScheme.primary,
                 icon:Icon(Icons.settings) ,
-                label: "اعدادات"
+                label: AppLocalizations.of(context)!.setting
             ),
 
 
